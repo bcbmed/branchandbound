@@ -50,7 +50,9 @@ public class BaB {
         String[] params = new String[3];
         Stats stat; //Renferme les stats issues  d'une série de nbSimul simulations
         ArrayList<Stats> statList = new ArrayList<Stats>();
-
+        
+        long debutCompute = System.nanoTime();
+        long totalCompute;
 
         for (double alph : alpha) {
 
@@ -80,7 +82,8 @@ public class BaB {
                 statList.add(stat);
             }
         }
-
+        
+        totalCompute = (System.nanoTime() - debutCompute) / 1000000;
 
         //=====================================================================
         //On créer un fichier de résultats de toutes les instances et on écrit
@@ -92,14 +95,14 @@ public class BaB {
         int version;
 
         nomFichierResultat = currentDir.getAbsolutePath() 
-                                + "\\Fichiers De Donnees\\"
+                                + "//Fichiers De Donnees//"
                                 + "Résultats  ";
 
         //Creer le dossier parents des fichiers de résultats s'il n'existe pas.
         if(!new File(currentDir.getAbsolutePath()
-                    + "\\Fichiers De Donnees\\").exists()){
+                    + "//Fichiers De Donnees//").exists()){
             new File(currentDir.getAbsolutePath() 
-                    + "\\Fichiers De Donnees\\").mkdirs();
+                    + "//Fichiers De Donnees//").mkdirs();
         }
 
         version = 0;
@@ -111,7 +114,17 @@ public class BaB {
         } catch (IOException ex) {
             Logger.getLogger(GenFichierDonnees.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        fichier.println("Fichier contenant les résultats de chaque expérience");
+        fichier.println("====================================================");
+        fichier.println("Ordinateur\t \t : Z97");
+        fichier.println("Processeur\t \t : i7 4790k @ 4.4Ghz");
+        fichier.println("Mémoire vive\t \t : 16GB");
+        fichier.println("OS \t \t \t : VM Ubuntu 14.04 émulée sur Windows 7");
+        fichier.println("Temps total calcul \t : " + totalCompute + " ms");
+        fichier.println("====================================================");
+        fichier.println("");
+        fichier.println("");
         for (Solution listSol : listSols) {
             fichier.println(nomFichiers.get(listSols.indexOf(listSol)));
             fichier.println("  Temps : " + f.format(listSol.getTimeToSolve()) + " ms");
@@ -140,14 +153,14 @@ public class BaB {
         currentDir = new File ("");
 
         nomFichierResultat = currentDir.getAbsolutePath() 
-                                + "\\Fichiers De Donnees\\"
+                                + "//Fichiers De Donnees//"
                                 + "StatsRésultats  ";
 
         //Creer le dossier parents des fichiers de résultats s'il n'existe pas.
         if(!new File(currentDir.getAbsolutePath()
-                    + "\\Fichiers De Donnees\\").exists()){
+                    + "//Fichiers De Donnees//").exists()){
             new File(currentDir.getAbsolutePath() 
-                    + "\\Fichiers De Donnees\\").mkdirs();
+                    + "//Fichiers De Donnees//").mkdirs();
         }
 
         version = 0;
@@ -165,6 +178,15 @@ public class BaB {
                                     + " simulations");
         fichier.println("======================================================"
                        +"===========================");
+        fichier.println("Ordinateur\t \t : Z97");
+        fichier.println("Processeur\t \t : i7 4790k @ 4.4Ghz");
+        fichier.println("Mémoire vive\t \t : 16GB");
+        fichier.println("OS \t \t \t : VM Ubuntu 14.04 émulée sur Windows 7");
+        fichier.println("Temps total calcul \t : " + totalCompute + " ms");
+        fichier.println("======================================================"
+                       +"===========================");
+        fichier.println("");
+        fichier.println("");
         fichier.println("");
 
         for (Stats stati : statList) {
