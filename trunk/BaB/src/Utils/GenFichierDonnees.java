@@ -76,7 +76,7 @@ public class GenFichierDonnees {
         File currentDir = new File ("");
         int version;
         
-        nomFichierResultat = currentDir.getAbsolutePath() + "\\Fichiers De Donnees\\"
+        nomFichierResultat = currentDir.getAbsolutePath() + "//Fichiers De Donnees//"
                         + "alpha_" + this.alpha 
                         + " - nbObjet_" + nbObjets 
                         + " - W_" + capaciteSac 
@@ -84,9 +84,9 @@ public class GenFichierDonnees {
         
         //Creer le dossier parents des fichiers de résultats s'il n'existe pas.
         if(!new File(currentDir.getAbsolutePath()
-                    + "\\Fichiers De Donnees\\").exists()){
+                    + "//Fichiers De Donnees//").exists()){
             new File(currentDir.getAbsolutePath() 
-                    + "\\Fichiers De Donnees\\").mkdirs();
+                    + "//Fichiers De Donnees//").mkdirs();
         }
         
         version = 0;
