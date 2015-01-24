@@ -178,11 +178,11 @@ public class BabSolver {
             if(w[i]<cap){
                 cap-=w[i];
                 z+=p[i];
-            }else if(cap != 0.0){
+            }else{// if(cap != 0.0){
                 z+=cap*p[i]/w[i];
                 return z;
-            }else{
-                return z;
+            /*}else{ //Cas inutile si poids positifs, et condition ci dessus aussi (fusionner les deux sans conditions)
+                return z;*/
             }
         }
         
