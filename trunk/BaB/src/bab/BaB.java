@@ -22,13 +22,14 @@ import java.util.logging.Logger;
  */
 public class BaB {
     
-    private DecimalFormat f = new DecimalFormat(); //permet de tronquer les chiffres
+    private DecimalFormat f;
     
     /**
      * Constructeur servant simplement à initialiser le niveau de tronquature souhaité pour les stats.
      * @param nb nombre de chiffres après la virgule désiré.
      */
     public BaB(int nb){
+        this.f = new DecimalFormat(); //permet de tronquer les chiffres
 	f.setMaximumFractionDigits(nb);
     }
 
