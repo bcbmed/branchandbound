@@ -1,0 +1,1 @@
+solver for knapsack 0-1 problem + simulations on randomized datas which show effects of different parameters like distributions of weigth and utility of objects.
